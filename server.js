@@ -46,12 +46,12 @@ app.post('/signin', (req, res) => {
 
 app.post('/register', (req, res) => {
   const { email, name, password } = req.body;
-  //async
+  // async
   // bcrypt.hash(password, null, null, function(err, hash) {  
   // });
   // sync
   const hash = bcrypt.hashSync(password);
-    // transaction executes only if all go well
+    // Transaction executes only if all go well
     db.transaction(trx => {
       trx.insert({
         hash: hash,
